@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Books;
+use App\Publisher;
+use App\Genre;
+
 class BookController extends Controller
 {
     /**
@@ -36,9 +39,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
-       
-        return view ('books/create');
+        $publishers = Publisher::all();
+        $genres = Genre::all();
+
+
+        return view ('books/create')->with(compact('publishers', 'genres'));
     }
 
     /**
@@ -80,8 +85,11 @@ class BookController extends Controller
     {
         //actual values of book attributes in inputs as default values
         $book = Books::findorFail($id);
+        $genres = Genre::all();
+        $publishers = Publisher::all();
+
  
-        return view('books/edit')->with(compact('book'));
+        return view('books/edit')->with(compact('book', 'genres', 'publishers'));
         
     }
 

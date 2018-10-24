@@ -21,6 +21,29 @@
                   <label>Image</label>
                   <input type="text" name="image" value="{{ old('image', $book->image) }} "class="form-control">
                 </div>
+                <div class="form-group">
+                  <label>Publisher</label>
+                  <select name="publisher_id">
+                  
+                    @foreach ($publishers as $publisher)
+                    <option value="{{ $publisher->id }}" @if ($book->publisher_id == $publisher->id) selected @endif >
+                    {{ $publisher->name }}
+                    </option>
+                    @endforeach
+                </select>
+                <div class="form-group">
+                  <label>Genre</label>
+                  <select name="genre_id">
+                  
+                    @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}" @if ($book->genre_id == $genre->id) selected @endif >
+                    {{ $genre->name }}
+                    </option>
+                    @endforeach
+                  </select>
+                </div>
+
+
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>

@@ -30,7 +30,6 @@ Route::post('/book/store', 'BookController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/private', 'PrivateController@index');
 
 Route::get('/private/show','PrivateController@show');
